@@ -1,0 +1,5 @@
+- 리스트 스타일링을 위한 3가지 property
+
+list-style-type
+list-style-image
+list-style-position

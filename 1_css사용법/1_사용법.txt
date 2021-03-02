@@ -1,0 +1,91 @@
+1. 외부 css 파일
+- <link> 요소를 사용하여 파일을 html에 연결
+- 링크는 상대링크가 좋다고 여겨지나 절대링크도 가능
+- head 태그에 두자 ( 엘리먼트 이전에 로드되게 하자 )
+- 한 개의 파일로 여러개의 페이지를 관리 가능
+
+<link rel="stylesheet" href="링크" />
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <h1>Hello World</h1>
+    <p>I love css</p>
+  </body>
+</html>
+
+- 전체 기본 스타일은 하나의 파일로 적용하고 해당 페이지에서만 다른 스타일은 오버라이딩
+- 시트순서로 처리하던가 or !important를 쓰던가 
+
+<link rel="stylesheet" type="text/css" href="main.css" />
+<link rel="stylesheet" type="text/css" href="override.css" />
+
+- 이 방식을 적용하면 html과 css를 다운로드
+- 이후에는 css는 캐싱되어 다운로드하지 않고 
+- 이동한 페이지의 html만 다운
+
+----------------------------------------------------------------
+
+2. 내부 스타일
+- html내에서 <style>태그를 활용
+- 해당 html내에서만 작동함
+
+<head>
+  <style>
+    h1 {
+      color: green;
+      text-decoration: underline;    
+    }
+    p {
+      font-size: 25px;
+      font-family: 'Trebuchet MS';
+    }
+  </style>
+</head>
+
+----------------------------------------------------------------
+
+3. css @import rule
+- 다른 스타일 시트로부터 style rule을 import
+
+@import [url] [미디어 쿼리]
+
+
+// 내부 스타일
+<style>
+  @import url('css/style.css')
+</style>
+
+// css 파일에서
+@import '/additional-style.css'
+@import 'https://fonts.googleapis.com/css?family=Lato'
+@import url('') screen and (orientation:landscape);  => 조건부 rule
+
+----------------------------------------------------------------
+
+4. 인라인 스타일
+- 인라인 스타일을 특정 element에 적용
+- content와 presentation의 분리를 위해 장려되지 않음
+- 위의 방식들을 모두 덮어쓰는 높은 우선순위
+
+<h1 style="color: green; text-decoration: underline;">Hello world!</h1>
+
+----------------------------------------------------------------
+
+5. js로 css 수정
+- element.style에 접근해서 스타일을 바꿈
+- style과 link태그를 동적으로 생성하는 방법도 있다.
+
+var el = document.getElementById("element")
+el.style.opacity = 0;
+el.style.fontFamily = 'sans-serif'
+
+$("#element").css({
+  margin: "5px"
+})
+
+----------------------------------------------------------------
