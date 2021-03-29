@@ -1,0 +1,87 @@
+선택자들은 css style을 적용할 specific html elements를 식별한다.
+다양한 selection method가 존재한다.
+
+----------------------------------------------------
+
+기본선택자
+
+*                    : 모든 요소
+[tag]                : 태그 선택자
+.[class]             : 클래스 선택자
+#[id]                : id 선택자
+:[pseudo-class]      : 가상 클래스, 요소 선택자
+
+----------------------------------------------------
+
+Attribute 선택자
+- html attribute의 유무와 값을 통해 element를 select
+
+[attr]             => <div attr>                   : attribute가 있다.
+[attr='val']       => <div attr="val">             : attribute의 값이 일치 
+[attr=~='val']     => <div attr="val1 val2 val3">  : attr의 공백으로 나눠진 집합에 값이 존재 
+[attr=^='val'] or [attr$='val']                    : attr의 값이 특정값으로 시작하거나 종료됨
+[attr*='val']                                      : attr의 값이 해당값을 포함
+
+----------------------------------------------------
+
+ID 선택자
+- html id가 일치하는 첫번쨰 요소를 select
+
+#warning {
+  color : red;
+}
+
+----------------------------------------------------
+
+Class 선택자
+- target으로 하는 class이름을 가진 모든 요소를 선택
+
+.important {
+  color: red;
+}
+
+.warning.important {
+  color: purple;
+}
+
+----------------------------------------------------
+
+Combinator
+- 후손, 자식, 형제 선택자
+- 자신 이후의 요소들을 타겟팅한다.
+- 부모와 이전 요소를 타겟팅할 수 없다.
+
+div span    : div밑에 아래의 모든 span들
+div > span  : div 직계의 span들
+a ~ span    : 형제 선택자 ( a의 뒤에 위치하는 형제인 span들 )
+a + span    : 인접한 형제 선택자 (a바로 뒤에 존재하는 모든 span )
+
+----------------------------------------------------
+
+가상 클래스
+- document tree에 의한 정보나 selector, combinator로 
+- 표현되지 못하는 선택을 허용하는 키워드 
+
+selector:pseudo-class {
+  property: value;
+}
+
+:visited
+:hover
+:focus
+:checked
+:disabled
+:not()
+:first-child
+:last-child
+:nth-child
+등등이 있다.
+
+:last-of-type
+- 부모의 자식중 마지막에 속하는 요소 한개만 select
+
+p:last-of-type {
+  background: red;
+}
+
+----------------------------------------------------
